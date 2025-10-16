@@ -70,7 +70,6 @@ cd BC.CMA
 3. Open **`BC.CMA.Rproj`** in RStudio.  
    This automatically sets the project root so that all relative paths work correctly.
 
-<hr style="border:0.5px solid #d3d3d3;">
 
 ### **2. Restore Required Packages**
 
@@ -93,7 +92,6 @@ library(medflex)
 library(mediation)
 ```
 
-<hr style="border:0.5px solid #d3d3d3;">
 
 ### **3. Run Simulation Studies (Section 4)**
 
@@ -110,7 +108,6 @@ Simulation results are automatically saved under:
 ./Sec4.Simulation/Simulation_result/
 ```
 
-<hr style="border:0.5px solid #d3d3d3;">
 
 ### **4. Run Real-Data Applications (Section 5)**
 
