@@ -395,16 +395,16 @@ result_MP_BC  <- make_csvfile(final_list[[3]])
 
 write.csv(
   result_NDE_BC,
-  paste0("./Sec4_Simulation/Simulation_result/03.BC_result/Simul_result_BC_NDE.csv"),
+  paste0("./Sec4.Simulation/Simulation_result/03.BC_result/Simul_result_BC_NDE.csv"),
   row.names = FALSE
 )
 write.csv(
   result_NIE_BC,
-  paste0("./Sec4_Simulation/Simulation_result/03.BC_result/Simul_result_BC_NIE.csv"),
+  paste0("./Sec4.Simulation/Simulation_result/03.BC_result/Simul_result_BC_NIE.csv"),
   row.names = FALSE
 )
 write.csv(
   result_MP_BC,
-  paste0("./Sec4_Simulation/Simulation_result/03.BC_result/Simul_result_BC_MP.csv"),
+  paste0("./Sec4.Simulation/Simulation_result/03.BC_result/Simul_result_BC_MP.csv"),
   row.names = FALSE
 )

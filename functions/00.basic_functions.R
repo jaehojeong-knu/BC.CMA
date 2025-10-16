@@ -14,6 +14,11 @@
 # ============================================================
 # Libraries
 # ============================================================
+# install.packages(c(
+#   "dplyr", "stringr", "data.table",
+#   "ggplot2", "psych", "boot",
+#   "medflex", "mediation"
+# ))
 # suppressMessages({
 #   library(dplyr)
 #   library(stringr)

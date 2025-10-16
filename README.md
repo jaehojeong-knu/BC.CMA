@@ -74,13 +74,15 @@ cd BC.CMA
 ### **2. Restore Required Packages**
 
 All dependencies are managed through `renv`, which ensures that the same package versions used in the manuscript are installed.
+
 To fully reproduce the environment, run:
 ```r
 install.packages("renv")
 renv::restore()
 ```
 
-Restoring with renv may take some time on the first run. If you prefer, you can manually install the main packages instead.
+However, since the number of required packages is small, you can simply install them manually for a quicker setup.
+
 Key packages required for this project include:
 ```r
 install.packages(c(

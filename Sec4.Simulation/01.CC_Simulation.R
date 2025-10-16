@@ -299,6 +299,6 @@ result_MP_CC <- make_csvfile(final_list[[1]])
 
 write.csv(
   result_MP_CC,
-  "./Sec4_Simulation/Simulation_result/01.CC_result/Simul_result_CC_MP.csv",
+  "./Sec4.Simulation/Simulation_result/01.CC_result/Simul_result_CC_MP.csv",
   row.names = FALSE
 )

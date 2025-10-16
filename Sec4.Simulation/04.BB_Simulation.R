@@ -185,7 +185,7 @@ folder_path <- "./Sec4.Simulation/Simulation_data/04.BB_data/"
 
 i_values     <- 1:3
 N_values     <- c(200, 300, 600)
-CB_data_list <- list()
+BB_data_list <- list()
 
 # Load all (i, N) datasets
 for (i in i_values) {
@@ -409,20 +409,20 @@ for (i in 1:length(BB_data_list)) {
 
 result_NDE_BB <- make_csvfile(final_list[[1]])
 result_NIE_BB <- make_csvfile(final_list[[2]])
-result_MP_BB  <- make_csvfile(final_list[[3]]) %>% filter(Method %!in% c("Est11", "Est21"))
+result_MP_BB  <- make_csvfile_MP(final_list[[3]]) %>% filter(Method %!in% c("Est11", "Est21"))
 
 write.csv(
-  result_NDE_BC,
-  paste0("./Sec4_Simulation/Simulation_result/04.BB_result/Simul_result_BB_NDE.csv"),
+  result_NDE_BB,
+  paste0("./Sec4.Simulation/Simulation_result/04.BB_result/Simul_result_BB_NDE.csv"),
   row.names = FALSE
 )
 write.csv(
-  result_NIE_BC,
-  paste0("./Sec4_Simulation/Simulation_result/04.BB_result/Simul_result_BB_NIE.csv"),
+  result_NIE_BB,
+  paste0("./Sec4.Simulation/Simulation_result/04.BB_result/Simul_result_BB_NIE.csv"),
   row.names = FALSE
 )
 write.csv(
-  result_MP_BC,
-  paste0("./Sec4_Simulation/Simulation_result/04.BB_result/Simul_result_BB_MP.csv"),
+  result_MP_BB,
+  paste0("./Sec4.Simulation/Simulation_result/04.BB_result/Simul_result_BB_MP.csv"),
   row.names = FALSE
 )

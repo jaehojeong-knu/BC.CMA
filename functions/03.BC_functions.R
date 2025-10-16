@@ -134,29 +134,26 @@ BCA.bc <- function(beta, th, u, x1, x2, sig2, COV) {
   len_c <- length(beta[5:p])
   
   # Non-symmetric matrices for quadratic forms
-  E_D_bc <- t(matrix(c(
-    0, 0, 1, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, sig2, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, sig2 * (x1 + x2) / 2, c(rep(0, len_c)), 1, x2, u,
-    rep(c(0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c))), len_c),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    rep(c(0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c))), len_c)
-  ), ncol = 1 + 6 + len_c * 2))
-  
-  E_I_bc <- t(matrix(c(
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 1, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, x1, c(rep(0, len_c)),
-    rep(c(0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c))), len_c),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    rep(c(0, 0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c))), len_c)
-  ), ncol = 1 + 6 + len_c * 2))
+  E_D_bc<-t(matrix(c(0,0,1,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,sig2,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,sig2*(x1+x2)/2,c(rep(0,len_c)),1,x2,u,
+                     rep(c(0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c))),len_c),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     rep(c(0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c))),len_c)),
+                   ncol=1+6+len_c*2))
+  E_I_bc<-t(matrix(c(0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,1,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,x1,c(rep(0,len_c)),
+                     rep(c(0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c))),len_c),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                     rep(c(0,0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c))),len_c)),
+                   ncol=1+6+len_c*2))
   
   # --------------------------------------------------------
   # Quadratic form setup
@@ -165,31 +162,30 @@ BCA.bc <- function(beta, th, u, x1, x2, sig2, COV) {
   eta_1 <- c(1, eta)
   
   # Derivative matrix d(eta1)/d(eta)
-  temp_1 <- c(0, 0, 0, 0, diag(len_c)[1, ], 0, 0, c(rep(0, len_c)))
-  if (len_c > 1) {
-    for (i in 2:len_c) {
-      temp2_1 <- c(0, 0, 0, 0, diag(len_c)[i, ], 0, 0, c(rep(0, len_c)))
-      temp_1  <- c(temp_1, temp2_1)
+  temp_1<-c(0,0,0,0,diag(len_c)[1,],0,0,c(rep(0,len_c)))
+  if(len_c>1){
+    for(i in 2:len_c){
+      temp2_1<-c(0,0,0,0,diag(len_c)[i,],0,0,c(rep(0,len_c)))
+      temp_1<-c(temp_1,temp2_1)
     }
   }
-  temp_2 <- c(0, 0, 0, 0, c(rep(0, len_c)), 0, 0, diag(len_c)[1, ])
-  if (len_c > 1) {
-    for (i in 2:len_c) {
-      temp2_2 <- c(0, 0, 0, 0, c(rep(0, len_c)), 0, 0, diag(len_c)[i, ])
-      temp_2  <- c(temp_2, temp2_2)
+  temp_2<-c(0,0,0,0,c(rep(0,len_c)),0,0,diag(len_c)[1,])
+  if(len_c>1){
+    for(i in 2:len_c){
+      temp2_2<-c(0,0,0,0,c(rep(0,len_c)),0,0,diag(len_c)[i,])
+      temp_2<-c(temp_2,temp2_2)
     }
   }
-  d_eta1_eta <- t(matrix(c(
-    0, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    1, 0, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 1, 0, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 1, 0, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    0, 0, 0, 1, c(rep(0, len_c)), 0, 0, c(rep(0, len_c)),
-    temp_1,
-    0, 0, 0, 0, c(rep(0, len_c)), 1, 0, c(rep(0, len_c)),
-    0, 0, 0, 0, c(rep(0, len_c)), 0, 1, c(rep(0, len_c)),
-    temp_2
-  ), ncol = 1 + 6 + len_c * 2))
+  d_eta1_eta<-t(matrix(c(0,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                         1,0,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                         0,1,0,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                         0,0,1,0,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                         0,0,0,1,c(rep(0,len_c)),0,0,c(rep(0,len_c)),
+                         temp_1,
+                         0,0,0,0,c(rep(0,len_c)),1,0,c(rep(0,len_c)),
+                         0,0,0,0,c(rep(0,len_c)),0,1,c(rep(0,len_c)),
+                         temp_2),
+                       ncol=1+6+len_c*2))
   
   # --------------------------------------------------------
   # NDE, NIE calculation
