@@ -1,8 +1,12 @@
 # ============================================================
 # 02.BB_Data_application.R
 # ------------------------------------------------------------
-# Data application for the Binary Outcome + Binary Mediator (BB) case
-# (student dataset from the {mediation} package).
+# Data application for the Binary Outcome + Binary Mediator (BC) case
+# corresponding to Section 5.2 of the manuscript.
+#
+# Dataset:
+#   - We use the student dataset bundled with the {mediation} package.
+#     No external data files are required.
 #
 # Reference:
 #   Tingley, D., Yamamoto, T., Hirose, K., Keele, L., & Imai, K. (2014).
@@ -28,7 +32,7 @@ source('./functions/04.BB_functions.R')
 #   Y (binary):  fight       - fight at school (1 = yes)
 #   X (binary):  catholic    - catholic school (1 = yes)
 #   M (binary):  attachment  - attachment to school (1 = like)
-#   C (conf.) :  gender (0/1), income (ordered 1–16), pared (0/1)
+#   C : gender (0:Male, 1:Female), income (1–16, treated as continuous), pared (1 = Yes)
 # ------------------------------------------------------------
 
 data("student", package = "mediation")
@@ -47,8 +51,7 @@ modeling_data$gender <- as.factor(modeling_data$gender)
 modeling_data$pared  <- as.factor(modeling_data$pared)
 
 # income: numeric/ordered scale (kept numeric)
-# (Optional) quick check:
-# hist(modeling_data$income); abline(v = summary(modeling_data$income)[c(2,3,5)], col = "red", lwd = 2, lty = 2)
+
 
 # ------------------------------------------------------------
 # 2) Modeling Setup (BB case: Binary Y, Binary M)
@@ -71,6 +74,7 @@ pared_grid   <- c(0, 1)
 gender_grid  <- c(0, 1)
 
 u_combi <- expand.grid(gender = gender_grid, income = income_grid, pared = pared_grid)
+
 
 # ------------------------------------------------------------
 # 3) Point Estimation
@@ -123,6 +127,7 @@ for (i in 1:nrow(u_combi)) {
 }
 
 Result_Ord <- Result_Ord %>% arrange(gender, income, pared)
+
 
 # ------------------------------------------------------------
 # 4) Bootstrap Inference (percentile 95% CI)

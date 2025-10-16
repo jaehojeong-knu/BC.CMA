@@ -29,10 +29,10 @@ source('./functions/03.BC_functions.R')
 # 1) Load & Prepare Data
 # ------------------------------------------------------------
 # Variables kept:
-#   Y (binary):  UPB      - unwanted pursuit behavior (0/1)
+#   Y (binary):  UPB      - unwanted pursuit behavior (1 = yes)
 #   X (binary):  attbin   - attitude (1 = higher-than-mean, 0 = lower-than-mean)
-#   M (cont.) :  negaff   - negative affectivity (standardized)
-#   C (conf.) :  age (numeric), educ (1–3), gender (factor: 1/2)
+#   M (continuous) :  negaff   - negative affectivity (standardized)
+#   C :  age (numeric), educ (1–3, treated as continuous), gender (1:Female, 2:Male)
 # ------------------------------------------------------------
 
 data("UPBdata", package = "medflex")
@@ -45,7 +45,7 @@ modeling_data$UPB    <- as.factor(modeling_data$UPB)     # 0/1
 modeling_data$attbin <- as.factor(modeling_data$attbin)  # 0/1
 
 # Confounders
-# age: numeric (keep as is; visualize / summarize if needed)
+# age: numeric (keep as is)
 # educ: convert to numeric scale 1(L)–3(H)
 modeling_data$educ <- as.numeric(modeling_data$educ)
 
@@ -53,6 +53,7 @@ modeling_data$educ <- as.numeric(modeling_data$educ)
 # NOTE: level meanings follow the package coding; 1/2 labels are retained.
 modeling_data$gender <- as.numeric(modeling_data$gender)
 modeling_data$gender <- as.factor(modeling_data$gender)
+
 
 # ------------------------------------------------------------
 # 2) Modeling Setup (BC case: Binary Y, Continuous M)
@@ -74,6 +75,7 @@ educ_grid  <- c(1, 2, 3)
 gender_grid <- c(1, 2)
 
 u_combi <- expand.grid(gender = gender_grid, age = age_grid, educ = educ_grid)
+
 
 # ------------------------------------------------------------
 # 3) Point Estimation
@@ -127,6 +129,7 @@ for (i in 1:nrow(u_combi)) {
 }
 
 Result_Ord <- Result_Ord %>% arrange(gender, age, educ)
+
 
 # ------------------------------------------------------------
 # 4) Bootstrap Inference (percentile 95% CI)
