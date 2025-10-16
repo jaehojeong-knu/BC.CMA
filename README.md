@@ -106,10 +106,10 @@ library(mediation)
 
 Each simulation scenario can be executed independently:
 ```r
-source("Sec4.Simulation/CC_Simulation.R")  # Subsection 4.1
-source("Sec4.Simulation/CB_Simulation.R")  # Subsection 4.2
-source("Sec4.Simulation/BC_Simulation.R")  # Subsection 4.3
-source("Sec4.Simulation/BB_Simulation.R")  # Subsection 4.4
+source("./Sec4.Simulation/01.CC_Simulation.R")  # Subsection 4.1
+source("./Sec4.Simulation/02.CB_Simulation.R")  # Subsection 4.2
+source("./Sec4.Simulation/03.BC_Simulation.R")  # Subsection 4.3
+source("./Sec4.Simulation/04.BB_Simulation.R")  # Subsection 4.4
 ```
 
 Simulation results are automatically saved under:
@@ -122,8 +122,8 @@ Simulation results are automatically saved under:
 
 Run the following scripts for real-data analyses:
 ```r
-source("Sec5.Data_application/01.BC_Data_application.R")  # Subsection 5.1
-source("Sec5.Data_application/02.BB_Data_application.R")  # Subsection 5.2
+source("./Sec5.Data_application/01.BC_Data_application.R")  # Subsection 5.1
+source("./Sec5.Data_application/02.BB_Data_application.R")  # Subsection 5.2
 ```
 
 Outputs are automatically saved under:
