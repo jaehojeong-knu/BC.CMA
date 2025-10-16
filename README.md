@@ -1,6 +1,6 @@
 # Bias-corrected estimation in causal mediation analysis
 
-This repository provides reproducible R scripts for the manuscript **“Bias-corrected estimation in causal mediation analysis”** by *Jaeho Jeong, Jongho Im, and Young Min Kim*.
+This repository provides reproducible R project for the manuscript **“Bias-corrected estimation in causal mediation analysis”** by *Jaeho Jeong, Jongho Im, and Young Min Kim*.
 
 ---
 
@@ -8,7 +8,7 @@ This repository provides reproducible R scripts for the manuscript **“Bias-cor
 ## Overview
 
 
-It contains all R codes used in the manuscript, including Monte Carlo simulations (Section 4) and real-data applications (Section 5). It introduces two likelihood-based bias-correction methods (BC1 and BC2) for causal mediation analysis (CMA). These methods address **transformation-induced finite-sample bias** in estimating the natural direct effect (NDE), natural indirect effect (NIE), and mediation proportion (MP).
+It contains all R scripts used in the manuscript, including Monte Carlo simulations (Section 4) and real-data applications (Section 5). It introduces two likelihood-based bias-correction methods (BC1 and BC2) for causal mediation analysis (CMA). These methods address **transformation-induced finite-sample bias** in estimating the natural direct effect (NDE), natural indirect effect (NIE), and mediation proportion (MP).
 
 ---
 
@@ -45,7 +45,9 @@ BC.CMA/
 
 ## Setup & Reproducibility
 
-This project uses **[`renv`](https://rstudio.github.io/renv/)** to ensure a fully reproducible R environment.
+All dependencies are managed through `renv`, which ensures that the same package versions used in the manuscript are installed.
+However, since the number of required packages is small, we can simply install them manually for a quicker setup.
+
 
 ---
 
@@ -73,15 +75,11 @@ cd BC.CMA
 
 ### **2. Restore Required Packages**
 
-All dependencies are managed through `renv`, which ensures that the same package versions used in the manuscript are installed.
-
 To fully reproduce the environment, run:
 ```r
 install.packages("renv")
 renv::restore()
 ```
-
-However, since the number of required packages is small, you can simply install them manually for a quicker setup.
 
 Key packages required for this project include:
 ```r
