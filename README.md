@@ -4,10 +4,14 @@ This repository provides reproducible R scripts for the manuscript **“Bias-cor
 
 ---
 
+
 ## Overview
 
+
 This repository contains all R codes used in the manuscript, including Monte Carlo simulations (Section 4) and real-data applications (Section 5).  
-It introduces two likelihood-based bias-correction methods (BC1 and BC2) to address **transformation-induced finite-sample bias** in estimating the natural direct effect (NDE), natural indirect effect (NIE), and mediation proportion (MP).
+It introduces two likelihood-based bias-correction methods (BC1 and BC2) for causal mediation analysis (CMA).  
+These methods address **transformation-induced finite-sample bias** in estimating the natural direct effect (NDE), natural indirect effect (NIE), and mediation proportion (MP).
+
 ---
 
 ## Project Structure
@@ -67,8 +71,6 @@ cd BC.CMA
    ```
 3. Open **`BC.CMA.Rproj`** in RStudio.  
    This automatically sets the project root so that all relative paths work correctly.
-
-> *All R scripts assume this folder structure. Do **not** move files outside the main project directory.*
 
 ---
 
